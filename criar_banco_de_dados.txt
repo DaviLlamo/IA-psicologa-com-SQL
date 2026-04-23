@@ -1,0 +1,24 @@
+-- 🔥 CRIAR BANCO
+DROP DATABASE IF EXISTS minha_ia;
+CREATE DATABASE minha_ia;
+
+USE minha_ia;
+
+-- 👤 TABELA DE USUÁRIOS
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    idade INT,
+    senha VARCHAR(200)
+);
+
+-- 💬 TABELA DE CONVERSAS
+CREATE TABLE conversas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    mensagem_usuario VARCHAR(500),
+    resposta_ia VARCHAR(1000),
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
